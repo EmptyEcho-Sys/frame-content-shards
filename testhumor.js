@@ -259,3 +259,34 @@ if (page.path == '/local/beneath/embassy/') {
     	--font-color: var(--neutral-color);
 	}
 	</style>`);
+
+//HUMORS
+env.COMBAT_COMPONENTS.test = {
+     name: " nåI? ádd ¤É²‘t",
+     slug: "test",
+     description: "'W WRONG LEAVE LEAVE LEVAE';'LEAVE HERE'",
+     help: "'move';'balance';'repeat'",
+
+     primary: { //damage scales by positive effects on user
+          alterations: [["primary", "momentum"]],     
+
+          stats: {
+               maxhp: 4
+          },
+     },
+
+     secondary: { //Removes status effects from both you and the enemy
+          alterations: [["secondary", "level_statuses"]],
+          stats: {
+               maxhp: 4
+          }
+     },
+
+     utility: { //randomly strike enemies with attack, has chance to keep going
+          alterations: [["evade", "wild_frenzy"]],
+          stats: {
+               maxhp: 4
+          }
+     },
+     combatModifiers: ["entropy_eternal", "entropy_eyes", "entropy_clock", "entropy_heat"]
+}
