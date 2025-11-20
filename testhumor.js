@@ -265,10 +265,10 @@ env.COMBAT_COMPONENTS.test = {
      name: " nåI? ádd ¤É²‘t",
      slug: "test",
      description: "'W WRONG LEAVE LEAVE LEVAE';'LEAVE HERE'",
-     help: "'move';'balance';'repeat'",
+     help: "'[CANT]';'{YOU] ';(LEAVE].'",
 
      primary: { //damage scales by positive effects on user
-          alterations: [["primary", "momentum"]],     
+          alterations: [["primary", "test_stop"]],     
 
           stats: {
                maxhp: 4
@@ -276,17 +276,75 @@ env.COMBAT_COMPONENTS.test = {
      },
 
      secondary: { //Removes status effects from both you and the enemy
-          alterations: [["secondary", "level_statuses"]],
+          alterations: [["secondary", "test_leave"]],
           stats: {
                maxhp: 4
           }
      },
 
      utility: { //randomly strike enemies with attack, has chance to keep going
-          alterations: [["evade", "wild_frenzy"]],
+          alterations: [["evade", "test_innert"]],
           stats: {
                maxhp: 4
           }
      },
-     combatModifiers: ["entropy_eternal", "entropy_eyes", "entropy_clock", "entropy_heat"]
+     combatModifiers: ["test_innert", "test_nostatus", "test_status"]
 }
+//HUMORS END
+
+//AUGMENTS
+env.ACTOR_AUGMENTS.generic.test_degrade = {
+	slug: "test_degrade",
+	name: "%USER STOPS YOU STOP YOU STOⁿ&P ⁵ST■¥°ŕ90qv⅚ł",
+	image: "/img/textures/danger.gif",
+	description: "'can you not stop yourself?'it will come to be your end'",
+	alterations: [["test_stop", "test_degrade"]],
+	component: ["primary", "test"],
+	cost: 2
+}
+
+env.ACTOR_AUGMENTS.generic.test_own = {
+	slug: "tets-own",
+	name: "¿¿¿¿¿¿¿¿¿¿",
+	image: "/img/textures/danger.gif",
+	description: "'MINE MINE MINE MINE MINE';'I KEEP IT ALL TO MYSELF",
+	alterations: [["test_leave", "test_own"]],
+	component: ["secondary", "test"],
+	cost: 2
+}
+
+env.ACTOR_AUGMENTS.generic.test_away = {
+     slug: "test_away",
+     name: "½ï.S STAY STAY AY STA YË÷ MV£~",
+     image: "/img/textures/danger.gif",
+     description: "'WHY? WHY ? HY?'",
+     alterations: [["test_innert", "test_away"]],
+     component: ["utility", "test"],
+     cost: 2
+}
+	//END OF AUGMENTS
+
+	//STAGE MODIFIERS
+env.MODIFIERS.test_innert = {
+	name: "■■■■■■■■",
+	getHelp: ()=> {return env.STATUS_EFFECTS.surging_two.help},
+	alterations:{
+		all: [["STATUS", "test_innert"]]
+	}
+}
+
+env.MODIFIERS.test_nostatus = {
+	name: "■■■■■■■■",
+	getHelp: ()=> {return env.STATUS_EFFECTS.surging_set.help},
+	alterations:{
+		all: [["STATUS", "test_nostatus"]]
+	}
+}
+	env.MODIFIERS.test_status = {
+	name: "■■■■■■■■",
+	getHelp: ()=> {return env.STATUS_EFFECTS.surging_set.help},
+	alterations:{
+		all: [["STATUS", "test_status"]]
+	}
+}
+	//END OF STAGE MODIFIERS
