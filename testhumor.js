@@ -87,11 +87,9 @@ humors
             EXEC::change("e3a2_newcomp", "bone")
             HIDEREAD::
         entropy<+>loop
-            EXEC::change("e3a2_newcomp", "entropy")
+            EXEC::change("e3a2_newcomp", "test")
             HIDEREAD::
-        surging<+>loop
-            EXEC::change("e3a2_newcomp", "surging")
-            HIDEREAD::
+        test<+>loop
 
 fish
     basterminal
@@ -194,12 +192,7 @@ if(page.party){
 					eyes: 3
 				}
 			}
-			page.flags.components.entropy = 3
-			page.flags.components.surging = 3
-			page.flags.components.stupidhorrible = 3
-			page.flags.components.smog = 3
-			page.flags.components.steel = 3
-			page.flags.components.life = 3
+			page.flags.components.test = 3
 			
 			page.party[0].components["primary"] = "claws"
 			page.party[0].components["secondary"] = "claws"
