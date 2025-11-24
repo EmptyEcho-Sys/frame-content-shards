@@ -327,7 +327,7 @@ env.ACTOR_AUGMENTS.generic.test_away = {
 	//STAGE MODIFIERS
 env.MODIFIERS.test_innert = {
 	name: "■■■■■■■■",
-	getHelp: ()=> {return env.STATUS_EFFECTS.surging_two.help},
+	getHelp: ()=> {return env.STATUS_EFFECTS.test_innert.help},
 	alterations:{
 		all: [["STATUS", "test_innert"]]
 	}
@@ -335,16 +335,107 @@ env.MODIFIERS.test_innert = {
 
 env.MODIFIERS.test_nostatus = {
 	name: "■■■■■■■■",
-	getHelp: ()=> {return env.STATUS_EFFECTS.surging_set.help},
+	getHelp: ()=> {return env.STATUS_EFFECTS.test_nostatus.help},
 	alterations:{
 		all: [["STATUS", "test_nostatus"]]
 	}
 }
 	env.MODIFIERS.test_status = {
 	name: "■■■■■■■■",
-	getHelp: ()=> {return env.STATUS_EFFECTS.surging_set.help},
+	getHelp: ()=> {return env.STATUS_EFFECTS.test_status.help},
 	alterations:{
 		all: [["STATUS", "test_status"]]
 	}
 }
 	//END OF STAGE MODIFIERS
+
+env.STATUS_EFFECTS.test_innert = {
+		slug: "test_innert",
+	name: "■■■■■■■■",
+	passive: true,
+	icon: "https://corru.observer/img/textures/memoryhaze5.gif",
+	impulse: {type: "common", component: "test"},
+	events: {
+		onBeforeAction: function(context) {
+			
+			if(Math.random() < 0.35 && !context.settings.action.itemAction) {
+				let ActionSwap = ["test_innert"]
+				let ChosenAction = ActionSwap.sample()
+				context.settings.action = env.ACTIONS[ChosenAction]
+				let subject = context.settings.user
+
+				sendFloater({
+					target: subject,
+					type: "arbitrary",
+					arbitraryString: "INNERT.",
+					beneficial: false,
+					size: 2,
+				})
+
+				readoutAdd({
+					message: `ÊÀÀ×LW${subject.name}÷7ÿŒtÆizTã‡¾¥ bœ4gM! (<span definition="${processHelp(this.status, {caps: true})}">${this.status.name}</span>)`, 
+					name: "sourceless", 
+					type: "sourceless combat minordetail",
+					show: false,
+					sfx: false
+				})
+			}
+		}
+	},
+	help: "'yS ºŸ.iò÷7ÿŒtÆizTã‡¾¥ bœ4gMb• uË9+k `tËV TÀ ¤ÈL1ãv)—°'"
+},
+
+
+
+//end of status effects
+
+//actions
+env.ACTIONS.test_stop = {
+    slug: "test_stop",
+    name: "%USER STOPS YOU STOP YOU STOⁿ&P ⁵ST■¥°ŕ90qv⅚ł",
+    type: 'special',
+    desc: "'¬i *þ is there so‡÷Ü£ s o sommethin g  you were lo  ²ooking °<fÝ for? 7ËÿÌfo r   fo r or ?';'S Ëö= T = O ëL   P »dX .'",
+    help: "FOES::AUTOHIT -3HP 10%C x2",
+    anim: "basic-attack",
+    details: {
+		flavor: "'wide directional release of rapidly decaying dull light';'windup period removed due to dull saturation'",
+		onUse: `'HIT all foes'`,
+		onHit: `'[STAT::amt]'`,
+	},
+	stats: {
+		autohit: true,
+		accuracy: .4,
+		crit: .1,
+		amt: 3,
+		status: {
+				stun: {
+					name:"stun",
+					length:"1"
+				}
+		}
+	},
+    usage: {
+        act: "%USER IS ALIVE AND YOU AR E FORCING THEM TO ENDURE TH IS."
+    },
+        exec: function(user, target) {
+            let action = this;
+            return env.GENERIC_ACTIONS.singleTarget({
+                action, 
+                user, 
+                target,
+
+                critExec: ()=> env.GENERIC_ACTIONS.teamWave({
+                    team: user.enemyTeam,
+                    exec: (actor, i) => {
+                        env.GENERIC_ACTIONS.singleTarget({
+                            action, 
+                            user, 
+                            target: actor,
+                            hitStatus: this.stats.status.stun,
+                            canCrit: false
+                        })
+                    }
+                })
+            })
+        }
+    },
