@@ -239,8 +239,6 @@ if (page.path == '/local/beneath/embassy/') {
 		z-index: 30;
 	}
 
-
-	/* humor styling */
 	[component="test"] {
     	--background: url(https://corru.observer/img/textures/danger.gif);
     	--organelle-background: url(https://corru.observer/img/textures/danger.gif);    
@@ -255,30 +253,30 @@ if (page.path == '/local/beneath/embassy/') {
 
 //HUMORS
 env.COMBAT_COMPONENTS.test = {
-     name: " nåI? ádd ¤É²‘t",
+     name: " nåI? ádd ¤É²‘t",
      slug: "test",
-     description: "'W WRONG LEAVE LEAVE LEVAE';'LEAVE HERE'",
-     help: "'[CANT]';'{YOU] ';(LEAVE].'",
+     description: "'W WRONG LEAVE LEAVE LEVAE';'LEAVE HERE'",
+     help: "'[CANT]';'{YOU] ';(LEAVE].'",
 
-     primary: { //damage scales by positive effects on user
+     primary: { //windup teamwave stun
           alterations: [["primary", "test_stop"]],     
 
           stats: {
-               maxhp: 4
+               maxhp: 8
           },
      },
 
-     secondary: { //Removes status effects from both you and the enemy
+     secondary: { //flail but stun
           alterations: [["secondary", "test_leave"]],
           stats: {
-               maxhp: 4
+               maxhp: 8
           }
      },
 
-     utility: { //randomly strike enemies with attack, has chance to keep going
+     utility: { //invoke STUN
           alterations: [["evade", "test_innert"]],
           stats: {
-               maxhp: 4
+               maxhp: 8
           }
      },
      combatModifiers: ["test_innert", "test_nostatus", "test_status"]
@@ -288,9 +286,9 @@ env.COMBAT_COMPONENTS.test = {
 //AUGMENTS
 env.ACTOR_AUGMENTS.generic.test_degrade = {
 	slug: "test_degrade",
-	name: "%USER STOPS YOU STOP YOU STOⁿ&P ⁵ST■¥°ŕ90qv⅚ł",
+	name: "%USER STOPS YOU STOP YOU STOⁿ&P ⁵ST■¥°ŕ90qv⅚ł",
 	image: "/img/textures/danger.gif",
-	description: "'can you not stop yourself?'it will come to be your end'",
+	description: "'can you not stop yourself?;;'itW ill come to be your end'",
 	alterations: [["test_stop", "test_degrade"]],
 	component: ["primary", "test"],
 	cost: 2
@@ -298,9 +296,9 @@ env.ACTOR_AUGMENTS.generic.test_degrade = {
 
 env.ACTOR_AUGMENTS.generic.test_own = {
 	slug: "tets-own",
-	name: "¿¿¿¿¿¿¿¿¿¿",
+	name: "¿¿?¿¿¿¿??¿¿¿?¿",
 	image: "/img/textures/danger.gif",
-	description: "'MINE MINE MINE MINE MINE';'I KEEP IT ALL TO MYSELF",
+	description: "'MINE MINE MINE MINE MINE';';;I KEEP IT ALL TO MYSELF",
 	alterations: [["test_leave", "test_own"]],
 	component: ["secondary", "test"],
 	cost: 2
@@ -308,9 +306,9 @@ env.ACTOR_AUGMENTS.generic.test_own = {
 
 env.ACTOR_AUGMENTS.generic.test_away = {
      slug: "test_away",
-     name: "½ï.S STAY STAY AY STA YË÷ MV£~",
+     name: "½ï.S STAY STAY AY STA YË÷ MV£~",
      image: "/img/textures/danger.gif",
-     description: "'WHY? WHY ? HY?'",
+     description: "'WHY? WHY ? HY?'",
      alterations: [["test_innert", "test_away"]],
      component: ["utility", "test"],
      cost: 2
@@ -319,7 +317,7 @@ env.ACTOR_AUGMENTS.generic.test_away = {
 
 	//STAGE MODIFIERS
 env.MODIFIERS.test_innert = {
-	name: "■■■■■■■■",
+	name: "■■■■■■■■",
 	getHelp: ()=> {return env.STATUS_EFFECTS.test_innert.help},
 	alterations:{
 		all: [["STATUS", "test_innert"]]
@@ -327,14 +325,14 @@ env.MODIFIERS.test_innert = {
 }
 
 env.MODIFIERS.test_nostatus = {
-	name: "■■■■■■■■",
+	name: "■■■■■■■■",
 	getHelp: ()=> {return env.STATUS_EFFECTS.test_nostatus.help},
 	alterations:{
 		all: [["STATUS", "test_nostatus"]]
 	}
 }
 	env.MODIFIERS.test_status = {
-	name: "■■■■■■■■",
+	name: "■■■■■■■■",
 	getHelp: ()=> {return env.STATUS_EFFECTS.test_status.help},
 	alterations:{
 		all: [["STATUS", "test_status"]]
@@ -344,7 +342,7 @@ env.MODIFIERS.test_nostatus = {
 
 env.STATUS_EFFECTS.test_innert = {
 		slug: "test_innert",
-	name: "■■■■■■■■",
+	name: "■■■■■■■■",
 	passive: true,
 	icon: "https://corru.observer/img/textures/memoryhaze5.gif",
 	impulse: {type: "common", component: "test"},
@@ -375,7 +373,7 @@ env.STATUS_EFFECTS.test_innert = {
 			}
 		}
 	},
-	help: "'yS ºŸ.iò÷7ÿŒtÆizTã‡¾¥ bœ4gMb• uË9+k `tËV TÀ ¤ÈL1ãv)—°'"
+	help: "'yS ºŸ.iò÷7ÿŒtÆizTã‡¾¥ bœ4gMb• uË9+k `tËV TÀ ¤ÈL1ãv)—°'"
 },
 
 
@@ -385,15 +383,15 @@ env.STATUS_EFFECTS.test_innert = {
 //actions
 env.ACTIONS.test_stop = {
     slug: "test_stop",
-    name: "%USER STOPS YOU STOP YOU STOⁿ&P ⁵ST■¥°ŕ90qv⅚ł",
+    name: "WINDUP::%USER STOPS YOU STOP YOU STOⁿ&P ⁵ST■¥°ŕ90qv⅚ł",
     type: 'special',
-    desc: "'¬i *þ is there so‡÷Ü£ s o sommethin g  you were lo  ²ooking °<fÝ for? 7ËÿÌfo r   fo r or ?';'S Ëö= T = O ëL   P »dX .'",
-    help: "FOES::AUTOHIT -3HP 10%C x2",
+    desc: "'¬i *þ is there so‡÷Ü£ s o sommethin g  you were lo  ²ooking °<fÝ for? 7ËÿÌfo r   fo r or ?';'S Ëö= T = O ëL   P »dX .'",
+    help: "FOES::[STAT::amt] [STAT::stun], ON CRIT::EXTRA [STAT::amt] [STAT::stun]",
     anim: "basic-attack",
     details: {
-		flavor: "'wide directional release of rapidly decaying dull light';'windup period removed due to dull saturation'",
-		onUse: `'HIT all foes'`,
-		onHit: `'[STAT::amt]'`,
+		flavor: "'forced to contiue, they marh on to death;;' you knw how it alwas ends, so why do you continue?'",
+		onUse: `'STRIE'`,
+		onHit: `R UIN'; THE GOOD`,
 	},
 	stats: {
 		autohit: true,
@@ -408,7 +406,10 @@ env.ACTIONS.test_stop = {
 		}
 	},
     usage: {
-        act: "%USER IS ALIVE AND YOU AR E FORCING THEM TO ENDURE TH IS."
+        act: "%USER IS ALIVE AND YOU AR E FORCING THEM TO ENDURE TH IS.",
+		hit: ";%USERV IS AN UNILLING PASENGER AND YET YOU STILL DRIVE'",
+		crit: "%TARGET IS NN EXT",
+		miss: "YOU ARE AT FAULY T, %TRUEUSER.'"
     },
         exec: function(user, target) {
             let action = this;
@@ -432,4 +433,60 @@ env.ACTIONS.test_stop = {
             })
         }
     }
+},
+env.ACTIONS.test_leave = { 
+	slug: "test_leave",
+	name: "Frenzied Flail",
+	type: 'target',
+	anim: "basic-attack",
+	verb: "flail at",
+	details: {
+		flavor: "'STRI K E'",
+		onHit: "'++ BE G GONE'",
+		onCrit: "'+W HH Y DO YOU R REM  M MAIN'",
+	},
+	usage: {
+		act: "%USER  'S B  ODY	CO NTO RTS",
+		crit: "%USER'S AGO NY  MUST   C ONTINUE",
+		hit: "%USER IS  R E  LEAS ED ",
+		miss: "%TARGET IS S  S PA RED"
+	},
+	stats:{
+		accuracy: .7,
+		crit: 0.1,
+		amt: 2,
+		status: {
+				stun: {
+					name:"stun",
+					length:"1"
+				}
+	},
+	exec: function(user, target) { //stole a bit of frenzy's code,
+		let action = this
+		let targetTeam
+		switch(user.team.name) {
+			case "ally": targetTeam = env.rpg.enemyTeam; break;
+			case "enemy": targetTeam = env.rpg.allyTeam; break;
+		}
+		let validTargets = targetTeam.members.filter(member => member.state != "dead" && member.state != "lastStand")
+		if(validTargets.length) for (let i = 0; i < 1; i++) {
+			if (validTargets) {
+				let target = validTargets.sample()
+					setTimeout(()=>{
+						env.GENERIC_ACTIONS.singleTarget({
+							action,
+							user,
+							target,
+							critExec: ({target})=> {
+								if(target.hp > 0 && target.state != "lastStand") {
+									env.setTimeout(()=>{
+										useAction(user, this, target, {beingUsedAsync: true, reason: "test_leave"})
+									}, 200)
+								}
+							}
+						})
+					}, 200)
+			}
+		}
+	}
 }
