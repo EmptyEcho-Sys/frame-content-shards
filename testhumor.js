@@ -433,7 +433,8 @@ env.ACTIONS.test_stop = {
             })
         }
     }
-},
+}
+
 env.ACTIONS.test_leave = { 
 	slug: "test_leave",
 	name: "Frenzied Flail",
