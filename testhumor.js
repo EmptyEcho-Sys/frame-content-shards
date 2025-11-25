@@ -437,10 +437,10 @@ env.ACTIONS.test_stop = {
 
 env.ACTIONS.test_leave = { 
 	slug: "test_leave",
-	name: "Frenzied Flail",
+	name: "BB e GONE",
 	type: 'target',
 	anim: "basic-attack",
-	verb: "flail at",
+	verb: "STR I kES",
 	details: {
 		flavor: "'STRI K E'",
 		onHit: "'++ BE G GONE'",
@@ -462,7 +462,7 @@ env.ACTIONS.test_leave = {
 					length:"1"
 				}
 	},
-	exec: function(user, target) { //stole a bit of frenzy's code,
+	exec: function(user, target) { //yeah this is just frenzied flail
 		let action = this
 		let targetTeam
 		switch(user.team.name) {
