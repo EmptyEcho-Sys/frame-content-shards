@@ -252,227 +252,226 @@ if (page.path == '/local/beneath/embassy/') {
 	</style>`);
 
 //HUMORS
-env.COMBAT_COMPONENTS.test = {
-     name: " nåI? ádd ¤É²‘t",
-     slug: "test",
-     description: "'W WRONG LEAVE LEAVE LEVAE';'LEAVE HERE'",
-     help: "'[CANT]';'{YOU] ';(LEAVE].'",
+	env.COMBAT_COMPONENTS.test = {
+    	name: " nåI? ádd ¤É²‘t",
+    	slug: "test",
+    	description: "'W WRONG LEAVE LEAVE LEVAE';'LEAVE HERE'",
+    	help: "'[CANT]';'{YOU] ';(LEAVE].'",
 
-     primary: { //windup teamwave stun
-          alterations: [["primary", "test_stop"]],     
+    	primary: { //windup teamwave stun
+        	alterations: [["primary", "test_stop"]],     
+        	stats: {
+            	maxhp: 8
+        	},
+    	},
 
-          stats: {
-               maxhp: 8
-          },
-     },
+    	secondary: { //flail but stun
+        	alterations: [["secondary", "test_leave"]],
+        	stats: {
+            	maxhp: 8
+        	}
+    	},
 
-     secondary: { //flail but stun
-          alterations: [["secondary", "test_leave"]],
-          stats: {
-               maxhp: 8
-          }
-     },
-
-     utility: { //invoke STUN
-          alterations: [["evade", "test_innert"]],
-          stats: {
-               maxhp: 8
-          }
-     },
-     combatModifiers: ["test_innert", "test_nostatus", "test_status"]
-}
+    	utility: { //invoke STUN
+        	alterations: [["evade", "test_innert"]],
+        	stats: {
+            	maxhp: 8
+        	}
+    	},
+    	combatModifiers: ["test_innert", "test_nostatus", "test_status"]
+	}
 //HUMORS END
 
 //AUGMENTS
-env.ACTOR_AUGMENTS.generic.test_degrade = {
-	slug: "test_degrade",
-	name: "%USER STOPS YOU STOP YOU STOⁿ&P ⁵ST■¥°ŕ90qv⅚ł",
-	image: "/img/textures/danger.gif",
-	description: "'can you not stop yourself?;;'itW ill come to be your end'",
-	alterations: [["test_stop", "test_degrade"]],
-	component: ["primary", "test"],
-	cost: 2
-}
+	env.ACTOR_AUGMENTS.generic.test_degrade = {
+		slug: "test_degrade",
+		name: "%USER STOPS YOU STOP YOU STOⁿ&P ⁵ST■¥°ŕ90qv⅚ł",
+		image: "/img/textures/danger.gif",
+		description: "'can you not stop yourself?;;'itW ill come to be your end'",
+		alterations: [["test_stop", "test_degrade"]],
+		component: ["primary", "test"],
+		cost: 2
+	}
 
-env.ACTOR_AUGMENTS.generic.test_own = {
-	slug: "tets-own",
-	name: "¿¿?¿¿¿¿??¿¿¿?¿",
-	image: "/img/textures/danger.gif",
-	description: "'MINE MINE MINE MINE MINE';';;I KEEP IT ALL TO MYSELF",
-	alterations: [["test_leave", "test_own"]],
-	component: ["secondary", "test"],
-	cost: 2
-}
+	env.ACTOR_AUGMENTS.generic.test_own = {
+		slug: "tets-own",
+		name: "¿¿?¿¿¿¿??¿¿¿?¿",
+		image: "/img/textures/danger.gif",
+		description: "'MINE MINE MINE MINE MINE';';;I KEEP IT ALL TO MYSELF",
+		alterations: [["test_leave", "test_own"]],
+		component: ["secondary", "test"],
+		cost: 2
+	}
 
-env.ACTOR_AUGMENTS.generic.test_away = {
-     slug: "test_away",
-     name: "½ï.S STAY STAY AY STA YË÷ MV£~",
-     image: "/img/textures/danger.gif",
-     description: "'WHY? WHY ? HY?'",
-     alterations: [["test_innert", "test_away"]],
-     component: ["utility", "test"],
-     cost: 2
-}
+	env.ACTOR_AUGMENTS.generic.test_away = {
+    	slug: "test_away",
+    	name: "½ï.S STAY STAY AY STA YË÷ MV£~",
+    	image: "/img/textures/danger.gif",
+    	description: "'WHY? WHY ? HY?'",
+    	alterations: [["test_innert", "test_away"]],
+   		component: ["utility", "test"],
+    	cost: 2
+	}
 	//END OF AUGMENTS
 
 	//STAGE MODIFIERS
-env.MODIFIERS.test_innert = {
-	name: "■■■■■■■■",
-	getHelp: ()=> {return env.STATUS_EFFECTS.test_innert.help},
-	alterations:{
-		all: [["STATUS", "test_innert"]]
+	env.MODIFIERS.test_innert = {
+		name: "■■■■■■■■",
+		getHelp: ()=> {return env.STATUS_EFFECTS.test_innert.help},
+		alterations:{
+			all: [["STATUS", "test_innert"]]
+		}
 	}
-}
 
-env.MODIFIERS.test_nostatus = {
-	name: "■■■■■■■■",
-	getHelp: ()=> {return env.STATUS_EFFECTS.test_nostatus.help},
-	alterations:{
-		all: [["STATUS", "test_nostatus"]]
+	env.MODIFIERS.test_nostatus = {
+		name: "■■■■■■■■",
+		getHelp: ()=> {return env.STATUS_EFFECTS.test_nostatus.help},
+		alterations:{
+			all: [["STATUS", "test_nostatus"]]
+		}
 	}
-}
-	env.MODIFIERS.test_status = {
-	name: "■■■■■■■■",
-	getHelp: ()=> {return env.STATUS_EFFECTS.test_status.help},
-	alterations:{
-		all: [["STATUS", "test_status"]]
+		env.MODIFIERS.test_status = {
+		name: "■■■■■■■■",
+		getHelp: ()=> {return env.STATUS_EFFECTS.test_status.help},
+		alterations:{
+			all: [["STATUS", "test_status"]]
+		}
 	}
-}
 	//END OF STAGE MODIFIERS
 
-env.STATUS_EFFECTS.test_innert = {
+	env.STATUS_EFFECTS.test_innert = {
 		slug: "test_innert",
-	name: "■■■■■■■■",
-	passive: true,
-	icon: "https://corru.observer/img/textures/memoryhaze5.gif",
-	impulse: {type: "common", component: "test"},
-	events: {
-		onBeforeAction: function(context) {
+		name: "■■■■■■■■",
+		passive: true,
+		icon: "https://corru.observer/img/textures/memoryhaze5.gif",
+		impulse: {type: "common", component: "test"},
+		events: {
+			onBeforeAction: function(context) {
 			
-			if(Math.random() < 0.35 && !context.settings.action.itemAction) {
-				let ActionSwap = ["test_innert"]
-				let ChosenAction = ActionSwap.sample()
-				context.settings.action = env.ACTIONS[ChosenAction]
-				let subject = context.settings.user
+				if(Math.random() < 0.35 && !context.settings.action.itemAction) {
+					let ActionSwap = ["test_innert"]
+					let ChosenAction = ActionSwap.sample()
+					context.settings.action = env.ACTIONS[ChosenAction]
+					let subject = context.settings.user
 
-				sendFloater({
-					target: subject,
-					type: "arbitrary",
-					arbitraryString: "INNERT.",
-					beneficial: false,
-					size: 2,
-				})
+					sendFloater({
+						target: subject,
+						type: "arbitrary",
+						arbitraryString: "INNERT.",
+						beneficial: false,
+						size: 2,
+					})
 
-				readoutAdd({
-					message: `ÊÀÀ×LW${subject.name}÷7ÿŒtÆizTã‡¾¥ bœ4gM! (<span definition="${processHelp(this.status, {caps: true})}">${this.status.name}</span>)`, 
-					name: "sourceless", 
-					type: "sourceless combat minordetail",
-					show: false,
-					sfx: false
-				})
+					readoutAdd({
+						message: `ÊÀÀ×LW${subject.name}÷7ÿŒtÆizTã‡¾¥ bœ4gM! (<span definition="${processHelp(this.status, {caps: true})}">${this.status.name}</span>)`, 
+						name: "sourceless", 
+						type: "sourceless combat minordetail",
+						show: false,
+						sfx: false
+					})
+				}
 			}
-		}
+		},
+		help: "'yS ºŸ.iò÷7ÿŒtÆizTã‡¾¥ bœ4gMb• uË9+k `tËV TÀ ¤ÈL1ãv)—°'"
 	},
-	help: "'yS ºŸ.iò÷7ÿŒtÆizTã‡¾¥ bœ4gMb• uË9+k `tËV TÀ ¤ÈL1ãv)—°'"
-},
 
 
 
 //end of status effects
 
 //actions
-env.ACTIONS.test_stop = {
-    slug: "test_stop",
-    name: "WINDUP::%USER STOPS YOU STOP YOU STOⁿ&P ⁵ST■¥°ŕ90qv⅚ł",
-    type: 'special',
-    desc: "'¬i *þ is there so‡÷Ü£ s o sommethin g  you were lo  ²ooking °<fÝ for? 7ËÿÌfo r   fo r or ?';'S Ëö= T = O ëL   P »dX .'",
-    help: "FOES::[STAT::amt] [STAT::stun], ON CRIT::EXTRA [STAT::amt] [STAT::stun]",
-    anim: "basic-attack",
-    details: {
-		flavor: "'forced to contiue, they marh on to death;;' you knw how it alwas ends, so why do you continue?'",
-		onUse: `'STRIE'`,
-		onHit: `R UIN'; THE GOOD`,
-	},
-	stats: {
-		autohit: true,
-		accuracy: .4,
-		crit: .1,
-		amt: 3,
-		status: {
+	env.ACTIONS.test_stop = {
+    	slug: "test_stop",
+    	name: "WINDUP::%USER STOPS YOU STOP YOU STOⁿ&P ⁵ST■¥°ŕ90qv⅚ł",
+    	type: 'special',
+    	desc: "'¬i *þ is there so‡÷Ü£ s o sommethin g  you were lo  ²ooking °<fÝ for? 7ËÿÌfo r   fo r or ?';'S Ëö= T = O ëL   P »dX .'",
+    	help: "FOES::[STAT::amt] [STAT::stun], ON CRIT::EXTRA [STAT::amt] [STAT::stun]",
+    	anim: "basic-attack",
+    	details: {
+			flavor: "'forced to contiue, they marh on to death;;' you knw how it alwas ends, so why do you continue?'",
+			onUse: `'STRIE'`,
+			onHit: `R UIN'; THE GOOD`,
+		},
+		stats: {
+			autohit: true,
+			accuracy: .4,
+			crit: .1,
+			amt: 3,
+			status: {
 				stun: {
 					name:"stun",
 					length:"1"
 				}
-		}
-	},
-    usage: {
-        act: "%USER IS ALIVE AND YOU AR E FORCING THEM TO ENDURE TH IS.",
-		hit: ";%USERV IS AN UNILLING PASENGER AND YET YOU STILL DRIVE'",
-		crit: "%TARGET IS NN EXT",
-		miss: "YOU ARE AT FAULY T, %TRUEUSER.'"
-    },
-        exec: function(user, target) {
-            let action = this;
-            return env.GENERIC_ACTIONS.singleTarget({
-                action, 
-                user, 
-                target,
+			}
+		},
+    	usage: {
+        	act: "%USER IS ALIVE AND YOU AR E FORCING THEM TO ENDURE TH IS.",
+			hit: ";%USERV IS AN UNILLING PASENGER AND YET YOU STILL DRIVE'",
+			crit: "%TARGET IS NN EXT",
+			miss: "YOU ARE AT FAULY T, %TRUEUSER.'"
+    	},
+		exec: function(user, target) {
+			let action = this;
+			return env.GENERIC_ACTIONS.singleTarget({
+				action, 
+				user, 
+				target,
 
-                critExec: ()=> env.GENERIC_ACTIONS.teamWave({
-                    team: user.enemyTeam,
-                    exec: (actor, i) => {
-                        env.GENERIC_ACTIONS.singleTarget({
-                            action, 
-                            user, 
-                            target: actor,
-                            hitStatus: this.stats.status.stun,
-                            canCrit: false
-                        })
+				critExec: ()=> env.GENERIC_ACTIONS.teamWave({
+					team: user.enemyTeam,
+					exec: (actor, i) => {
+						env.GENERIC_ACTIONS.singleTarget({
+							action, 
+							user, 
+							target: actor,
+							hitStatus: this.stats.status.stun,
+							canCrit: false
+						})
                     }
                 })
-            })
-        }
-    }
-}
+			})
+		}
+	}	
 
-env.ACTIONS.test_leave = { 
-	slug: "test_leave",
-	name: "BB e GONE",
-	type: 'target',
-	anim: "basic-attack",
-	verb: "STR I kES",
-	details: {
-		flavor: "'STRI K E'",
-		onHit: "'++ BE G GONE'",
-		onCrit: "'+W HH Y DO YOU R REM  M MAIN'",
-	},
-	usage: {
-		act: "%USER  'S B  ODY	CO NTO RTS",
-		crit: "%USER'S AGO NY  MUST   C ONTINUE",
-		hit: "%USER IS  R E  LEAS ED ",
-		miss: "%TARGET IS S  S PA RED"
-	},
-	stats:{
-		accuracy: .7,
-		crit: 0.1,
-		amt: 2,
-		status: {
+	env.ACTIONS.test_leave = { 
+		slug: "test_leave",
+		name: "BB e GONE",
+		type: 'target',
+		anim: "basic-attack",
+		verb: "STR I kES",
+		details: {
+			flavor: "'STRI K E'",
+			onHit: "'++ BE G GONE'",
+			onCrit: "'+W HH Y DO YOU R REM  M MAIN'",
+		},
+		usage: {
+			act: "%USER  'S B  ODY	CO NTO RTS",
+			crit: "%USER'S AGO NY  MUST   C ONTINUE",
+			hit: "%USER IS  R E  LEAS ED ",
+			miss: "%TARGET IS S  S PA RED"
+		},
+		stats:{
+			accuracy: .7,
+			crit: 0.1,
+			amt: 2,
+			status: {
 				stun: {
 					name:"stun",
 					length:"1"
 				}
-	},
-	exec: function(user, target) { //yeah this is just frenzied flail
-		let action = this
-		let targetTeam
-		switch(user.team.name) {
-			case "ally": targetTeam = env.rpg.enemyTeam; break;
-			case "enemy": targetTeam = env.rpg.allyTeam; break;
-		}
-		let validTargets = targetTeam.members.filter(member => member.state != "dead" && member.state != "lastStand")
-		if(validTargets.length) for (let i = 0; i < 1; i++) {
-			if (validTargets) {
-				let target = validTargets.sample()
+			}
+		},
+		exec: function(user, target) { //yeah this is just frenzied flail
+			let action = this
+			let targetTeam
+			switch(user.team.name) {
+				case "ally": targetTeam = env.rpg.enemyTeam; break;
+				case "enemy": targetTeam = env.rpg.allyTeam; break;
+			}
+			let validTargets = targetTeam.members.filter(member => member.state != "dead" && member.state != "lastStand")
+			if(validTargets.length) for (let i = 0; i < 1; i++) {
+				if (validTargets) {
+					let target = validTargets.sample()
 					setTimeout(()=>{
 						env.GENERIC_ACTIONS.singleTarget({
 							action,
@@ -487,7 +486,9 @@ env.ACTIONS.test_leave = {
 							}
 						})
 					}, 200)
+				}
 			}
 		}
 	}
 }
+
