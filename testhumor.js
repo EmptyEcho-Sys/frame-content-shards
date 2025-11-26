@@ -343,6 +343,7 @@ if (page.path == '/local/beneath/embassy/') {
 		slug: "test_innert",
 		name: "■■■■■■■■",
 		passive: true,
+		infinite: true,
 		icon: "https://corru.observer/img/textures/memoryhaze5.gif",
 		impulse: {type: "common", component: "test"},
 		events: {
@@ -375,7 +376,46 @@ if (page.path == '/local/beneath/embassy/') {
 		help: "'yS ºŸ.iò÷7ÿŒtÆizTã‡¾¥ bœ4gMb• uË9+k `tËV TÀ ¤ÈL1ãv)—°'"
 	},
 
+	env.STATUS_EFFECTS.test_nostatus = {
+		slug: "test_nostatus",
+		name: "■■■■■■■■",
+		passive: true,
+		infinite: true,
+		events: {
+			onBeforeAddStatus: function(context) {
+				context.noAdd = true
+			}
+		},
+		help: "403"
+	},
 
+	env.STATUS_EFFECTS.test_status = {
+		slug: "test_status",
+		name: "■■■■■■■■",
+		passive: true,
+		infinite: true,
+		events: {
+
+		}
+	},
+
+	env.STATUS_EFFECTS.test_404 = {
+		slug: "test_404",
+		name: "ACTION::404",
+		passive: true,
+		infinite: true,
+		events: {
+
+		}
+	},
+
+	env.STATUS_EFFECTS.test_fated = {
+		slug: "test_fated",
+		name: "Fated::)<@^÷=4",
+		events: {
+
+		}
+	}
 
 //end of status effects
 
