@@ -399,14 +399,53 @@ if (page.path == '/local/beneath/embassy/') {
 		}
 	},
 
-	env.STATUS_EFFECTS.test_404 = {
+	env.STATUS_EFFECTS.test_404 = { //Return to this later, main thing is fixing up the text in spots to make it fit for the 404
 		slug: "test_404",
 		name: "ACTION::404",
 		passive: true,
 		infinite: true,
+		impulse: {type: "action", component: "test"},
 		events: {
+            GLOBAL_onEvade: function({subject, target, attack, runEvents, originalEventTarget}) {
+                let user = this.status.affecting
+                if( 
+                    target.state == "dead" ||
+                    user.state == "dead" ||
+                    subject == user
+                ) return;
+				
+                let secondary = env.ACTIONS[this.status.affecting.actions[1]]
 
-		}
+                setTimeout(()=>{
+					if (user.team.members.includes(target)) {
+						let Hitted = target
+						let Hitter = subject
+					} else {
+						let Hitted = subject
+						let Hitter = target
+					}
+                    useAction(this.status.affecting, secondary, secondary.beneficial ? Hitted : Hitter, {triggerActionUseEvent: false, beingUsedAsync: true, reason: "support"})
+
+                    sendFloater({
+                        target: this.status.affecting,
+                        type: "arbitrary",
+                        specialClass: "action",
+                        arbitraryString: `SUPPORT::${secondary.name.toUpperCase()}`,
+                        size: 1.5,
+                    })
+                
+                    readoutAdd({
+                        message: `${this.status.affecting.name} provides support alongside ${subject.name}'s attack on ${target.name}! (<span definition="${processHelp(this.status, {caps: true})}">${this.status.name}</span>)`, 
+                        name: "sourceless", 
+                        type: "sourceless combat minordetail",
+                        show: false,
+                        sfx: false
+                    })
+                }, env.ADVANCE_RATE * 0.5)
+            }
+        },
+
+		help: `if alive, when an ally crits a foe, use secondary\nif secondary is beneficial, used on ally\nif secondary is offensive, used on foe`
 	},
 
 	env.STATUS_EFFECTS.test_fated = {
